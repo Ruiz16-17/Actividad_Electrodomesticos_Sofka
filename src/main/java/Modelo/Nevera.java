@@ -48,10 +48,8 @@ public class Nevera extends Electrodomestico {
         double aumento = precio * 0.05;
 
         litrosMas = (getCapacidad() - 120) / 10;
-        for (int i = 0; i < litrosMas; i++) {
-            precio += aumento;
-
-        }
+        
+        precio += (Math.floor(litrosMas) * aumento);
 
         return precio;
     }

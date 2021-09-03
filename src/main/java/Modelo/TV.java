@@ -79,7 +79,7 @@ public class TV extends Electrodomestico {
 
             setTDT(false);
         }
-        
+
     }
 
     @Override
