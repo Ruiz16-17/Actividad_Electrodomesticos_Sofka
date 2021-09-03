@@ -1,32 +1,69 @@
 package Modelo;
 
-public class TV extends Electrodomestico{
+import java.util.Scanner;
+
+public class TV extends Electrodomestico {
 
     private int tamanio;
     private boolean isTDT;
 
-    public double calcularPrecio(){
-        double precio = calcularPrecio();
+    public double calcularPrecio() {
+        double precio = super.calcularPrecio();
 
-        if(getTamanio() > 40){
+        if (getTamanio() > 40) {
 
             precio *= 1.3;
 
-            if (getTDT()){
+            if (getTDT()) {
 
                 precio += 250000;
 
             }
-        }else{
+        } else if (getTDT()) {
 
-            if (getTDT()){
+            precio += 250000;
 
-                precio += 250000;
-
-            }
         }
 
         return precio;
+    }
+
+    public void solicitarTamanio(){
+
+        Scanner read = new Scanner(System.in);
+
+        System.out.println("Digite el tamaño en pulgadas del televisor");
+        setTamanio(read.nextInt());
+
+
+    }
+
+    public void solicitarTDT(){
+
+        Scanner read = new Scanner(System.in);
+        int opcion = 0;
+
+        System.out.println("¿Tiene TDT?" +
+                "\n1. Sí." +
+                "\n2. No.");
+        opcion = read.nextInt();
+
+        if(opcion == 1){
+            setTDT(true);
+        }else{
+
+            setTDT(false);
+        }
+
+
+    }
+
+    @Override
+    public String toString() {
+        return  super.toString() + "TV{" +
+                "tamanio=" + tamanio +
+                ", isTDT=" + isTDT +
+                '}';
     }
 
     public TV() {

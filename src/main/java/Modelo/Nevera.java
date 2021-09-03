@@ -1,11 +1,10 @@
 package Modelo;
 
+import java.util.Scanner;
+
 public class Nevera  extends Electrodomestico{
 
     private int capacidad;
-
-    public Nevera() {
-    }
 
     public double calcularPrecio(){
         double precio = super.calcularPrecio();
@@ -15,7 +14,16 @@ public class Nevera  extends Electrodomestico{
             precio = litrosExtra(precio);
 
             }
+
         return precio;
+    }
+
+    public void solicitarCapacidad(){
+
+        Scanner read = new Scanner(System.in);
+        System.out.println("Digite la capacidad de litros de la nevera");
+        setCapacidad(read.nextInt());
+
     }
 
     private double litrosExtra(double precio){
@@ -30,6 +38,16 @@ public class Nevera  extends Electrodomestico{
         }
 
         return precio;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Nevera{" +
+                "capacidad=" + capacidad +
+                '}';
+    }
+
+    public Nevera() {
     }
 
     public Nevera(char consumo, String procedencia, int capacidad) {

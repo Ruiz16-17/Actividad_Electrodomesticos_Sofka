@@ -8,7 +8,7 @@ public class Electrodomestico {
     private char consumo;
     private String procedencia;
 
-    protected double calcularPrecio(){
+    public double calcularPrecio(){
 
         return  asignarValorConsumo(getConsumo()) + asignarValorProcedencia(getProcedencia());
     }
@@ -63,21 +63,30 @@ public class Electrodomestico {
         return precio;
     }
 
-    public void  solicitarDatos(){
+    public void solicitarConsumoProcedencia(){
 
         Scanner read = new Scanner(System.in);
-        String consum;
+        int opcion = 0;
 
         System.out.println("Ingrese el consumo (A, B o C)");
-        consum = read.nextLine();
-        setConsumo(consum.charAt(0));
+        setConsumo(read.nextLine().charAt(0));
 
         System.out.println("Ingrese la procedencia " +
                 "\n1. Nacional." +
                 "\n2. Importado.");
-        setProcedencia(read.nextLine());
 
+        opcion = read.nextInt();
 
+        setProcedencia((opcion == 1 ) ? "Nacional" : "Importado" );
+
+    }
+
+    @Override
+    public String toString() {
+        return "Electrodomestico{" +
+                "consumo=" + consumo +
+                ", procedencia='" + procedencia + '\'' +
+                '}';
     }
 
     public Electrodomestico() {
